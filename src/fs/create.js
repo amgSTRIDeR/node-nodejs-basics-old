@@ -12,15 +12,16 @@ const fileText = 'I am fresh and young';
 const filePath = path.join(__dirname, 'files', fileName);
 
 const create = async () => {
-    fs.writeFile(filePath, fileText, {flag: 'wx'}, (err) => {
-        if(err) {
-            if (err.code === 'EEXIST') {
-                logColoredMessage(`File ${fileName} already exists`, 'yellow');
-            } else {
-                logColoredMessage(err, 'red')
-            }
+    try {
+        await fs.promises.writeFile(filePath, fileText, {flag: 'wx'});
+        logColoredMessage(`The file '${fileName}' has been created`, 'green');
+    } catch (err) {
+        if (err.code === 'EEXIST') {
+            logColoredMessage(`FS operation failed`, 'yellow');
+        } else {
+            logColoredMessage(err, 'red')
         }
-    })
+    }
 };
 
 await create();
