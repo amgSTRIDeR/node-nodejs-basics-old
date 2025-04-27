@@ -11,5 +11,5 @@ const COLORS = {
 
 export default function logColoredMessage(message, color = 'white') {
     const currentColor = COLORS[color.toUpperCase()] ?? COLORS.WHITE;
-    console.log(`${currentColor}${message}${COLORS.RESET}`)
+    console.log(`${currentColor}${message}${COLORS.RESET}\n`)
 };

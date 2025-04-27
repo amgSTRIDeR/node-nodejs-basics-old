@@ -17,7 +17,7 @@ const create = async () => {
         logColoredMessage(`The file '${fileName}' has been created`, 'green');
     } catch (err) {
         if (err.code === 'EEXIST') {
-            logColoredMessage(`FS operation failed`, 'yellow');
+            logColoredMessage(`FS operation failed`, 'red');
         } else {
             logColoredMessage(err, 'red')
         }
