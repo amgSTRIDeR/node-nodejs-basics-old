@@ -16,7 +16,7 @@ const list = async () => {
             const fullPath = path.join(folderPath, fileName);
             const fileStats = await fs.promises.lstat(fullPath);
             const { name, ext } = path.parse(fileName);
-            filesList.push({ name: name, ext: ext, size: `${fileStats.size} kB` });
+            filesList.push({ name: name, ext: ext, size: `${fileStats.size} bytes` });
         }
 
         console.group('Files List');
